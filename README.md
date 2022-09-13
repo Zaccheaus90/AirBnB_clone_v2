@@ -1,55 +1,62 @@
-# Synopsis
+# HBNB
 
-The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
-Only some features will be implemented and will be listed below once completed.
+This is the console /command interpreter for the Holberton Airbnb clone project. The console can be used to store objects in and retrieve objects using either a MySQL database, or a JSON file.
 
+### Supported classes:
+* BaseModel
+* User
+* State
+* City
+* Amenity
+* Place
+* Review
 
-## Features
+### Commands:
+* create - create an object
+* show - show an object (based on id)
+* destroy - destroy an object
+* all - show all objects, of one type or all types
+* quit/EOF - quit the console
+* help - see descriptions of commands
 
-### Command Interpreter
+To start the console using JSON file storage, navigate to the project folder and enter `./console.py` in the shell.
 
-#### Description
+To start the console using MySQL database as storage method, navigate to the project folder and enter:
+`HBNB_MYSQL_USER=<username> HBNB_MYSQL_PWD=<password HBNB_MYSQL_HOST=<server hostname> HBNB_MYSQL_DB=<database name> HBNB_TYPE_STORAGE=db ./console.py`
 
-The Command Interpreter is used to manage the whole application's functionality from the command line, such as:
-+ Crete a new object.
-+ Retrieve an object from a file, database, etc.
-+ Execute operation on objects. e.g. Count, compute statistics, etc.
-+ Update object's attributes.
-+ Destroy an object.
+#### Create
+`create <class name> [<attr name>="<attr value>" ...]`
+Ex:
+`create BaseModel`
+`create State name="California"`
+`create State name="New_York"`
 
-#### Usage
+#### Show
+`show <class name> <object id>`
+Ex:
+`show User my_id`
 
-To launch the console application in interactive mode simply run:
+#### Destroy
+`destroy <class name> <object id>`
+Ex:
+`destroy Place my_place_id`
 
-```console.py ```
+#### All
+`all` or `all <class name>`
+Ex:
+`all` or `all State`
 
-or to use the non-interactive mode run:
+#### Quit
+`quit` or `EOF`
 
-```echo "your-command-goes-here" | ./console.py ```
+#### Help
+`help` or `help <command>`
+Ex:
+`help` or `help quit`
 
-#### Commands
+Additionally, the console supports `<class name>.<command>(<parameters>)` syntax.
+Ex:
+`City.show(my_city_id)`
 
-Commands | Description | Usage
--------- | ----------- |-------- |
-**help** or **?**| Displays the documented commands. | **help**
-**quit**     | Exits the program. | **quit**
-**EOF**      | Ends the program. Used when files are passed into the program. | N/A
-**create**  | Creates a new instance of the \<class_name\>. Creates a Json file with the object representation. and prints the id of created object. | **create** \<class_name\>
-**show**    | Prints the string representation of an instance based on the class name and id. | **show** \<class_name class_id\>
-**destroy** | Deletes and instance base on the class name and id. | **destroy** \<class_name class_id\>
-**all** | Prints all string representation of all instances based or not on the class name | **all** or **all** \<class_name class_id\>
-**update** | Updates an instance based on the class name and id by adding or updating attribute | **update** \<class_name class_id key value\>
-
-## Tests
-
-If you wish to run at the test for this application all of the test are located
-under the **test/** folder and can execute all of them by simply running:
-
-```python3 -m unittest discover tests ```
-
-from the root directory.
-
-
-## Bugs
-
-+ No known bugs at this time.
+### Author
+Afolabi Zaccheaus 
